@@ -1,0 +1,10 @@
+export const ADD_CARD = 'ADD_CARD';
+export const ADD_MARKET = 'ADD_MARKET';
+export const UPDATE_LOCATION = 'UPDATE_LOCATION';
+export const RESET_STORE = 'RESET_STORE';
+export const CASE = 'CASE';
+export const BACKPLATE = 'BACKPLATE';
+export const KEYSWITCHES = 'KEYSWITCHES';
+export const KEYCAPS = 'KEYCAPS';
+export const CORDS = 'CORDS';
+export const SWITCHOPENER = 'SWITCHOPENER';
