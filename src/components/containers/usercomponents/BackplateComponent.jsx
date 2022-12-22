@@ -36,7 +36,7 @@ class BackplateComponent extends Component {
       .then((result) => result.json())
       .then((result) => {
         // console.log(result);
-        this.reload();
+        setTimeout(this.reload(), 1000);
       })
       .catch((err) => console.log('err in fetch: ', err));
   }
@@ -50,6 +50,7 @@ class BackplateComponent extends Component {
           key={i}
           addPart={this.props.addPart}
           goBack={this.props.goBack}
+          reload={this.reload}
         />
       );
     }
@@ -75,6 +76,24 @@ class BackplateComponent extends Component {
 }
 
 class BackplatesInComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.deleteButton = this.deleteButton.bind(this);
+  }
+
+  deleteButton(deleteId) {
+    // console.log(deleteId);
+    fetch('/backplate', {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: deleteId }),
+    }).then((result) => {
+      setTimeout(this.props.reload(), 1000);
+    });
+  }
+
   render() {
     const backplate = this.props.backplate;
     return (
@@ -89,6 +108,15 @@ class BackplatesInComponent extends Component {
           }}
         >
           Add
+        </button>
+        <button
+          className="deleteButton"
+          type="submit"
+          onClick={() => {
+            this.deleteButton(backplate._id);
+          }}
+        >
+          X
         </button>
       </div>
     );

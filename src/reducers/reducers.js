@@ -40,6 +40,22 @@ const marketsReducer = (state = initialState, action) => {
       }
     }
 
+    case types.REMOVE_PART: {
+      if (action.part === 'case') {
+        return { ...state, case: null };
+      } else if (action.part === 'backplate') {
+        return { ...state, backplate: null };
+      } else if (action.part === 'switches') {
+        return { ...state, switches: null };
+      } else if (action.part === 'keycaps') {
+        return { ...state, keycaps: null };
+      } else if (action.part === 'cords') {
+        return { ...state, cords: null };
+      } else if (action.part === 'switchopener') {
+        return { ...state, switchOpener: null };
+      }
+    }
+
     default:
       return state;
   }

@@ -9,7 +9,13 @@ import SwitchesComponent from './usercomponents/SwitchesComponent.jsx';
 import KeycapsComponent from './usercomponents/KeycapsComponent.jsx';
 import CordsComponent from './usercomponents/CordsComponent.jsx';
 import SwitchOpenerComponent from './usercomponents/SwitchOpenerComponent.jsx';
-import { toPage, resetStore, goBack, addPart } from '../../actions/actions.js';
+import {
+  toPage,
+  resetStore,
+  goBack,
+  addPart,
+  removePart,
+} from '../../actions/actions.js';
 
 const mapStateToProps = (store) => {
   return {
@@ -28,6 +34,7 @@ const mapDispatchToProps = (dispatch) => ({
   resetStore: () => dispatch(resetStore()),
   goBack: () => dispatch(goBack()),
   addPart: (part, partName) => dispatch(addPart(part, partName)),
+  removePart: (part) => dispatch(removePart(part)),
 });
 
 class MainContainer extends Component {
@@ -76,6 +83,7 @@ class MainContainer extends Component {
           keycaps={this.props.keycaps}
           cords={this.props.cords}
           switchopener={this.props.switchopener}
+          removePart={this.props.removePart}
         />,
       ];
     } else if (this.props.page === 'case') {

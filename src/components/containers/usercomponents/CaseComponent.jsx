@@ -36,7 +36,7 @@ class CaseComponent extends Component {
       .then((result) => result.json())
       .then((result) => {
         // console.log(result);
-        this.reload();
+        setTimeout(this.reload(), 1000);
       })
       .catch((err) => console.log('err in fetch: ', err));
   }
@@ -51,6 +51,7 @@ class CaseComponent extends Component {
           key={i}
           addPart={this.props.addPart}
           goBack={this.props.goBack}
+          reload={this.reload}
           // handleClick={this.handleClick}
         />
       );
@@ -77,8 +78,27 @@ class CaseComponent extends Component {
 }
 
 class CasesInComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.deleteButton = this.deleteButton.bind(this);
+  }
+
+  deleteButton(deleteId) {
+    // console.log(deleteId);
+    fetch('/case', {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: deleteId }),
+    }).then((result) => {
+      setTimeout(this.props.reload(), 1000);
+    });
+  }
+
   render() {
     const cases = this.props.case;
+    // console.log(cases);
     return (
       <div className="inComponent">
         <p>{cases.caseName}</p>
@@ -91,6 +111,15 @@ class CasesInComponent extends Component {
           }}
         >
           Add
+        </button>
+        <button
+          className="deleteButton"
+          type="submit"
+          onClick={() => {
+            this.deleteButton(cases._id);
+          }}
+        >
+          X
         </button>
       </div>
     );

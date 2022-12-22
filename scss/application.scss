@@ -13,7 +13,7 @@ body {
 
 #mainContainer {
   text-align: center;
-  background-color: $secondary;
+  background-color: rgb(240, 244, 244);
   padding: 0px;
   margin: 0;
 }
@@ -62,11 +62,29 @@ body {
   align-items: center;
   font-family: $primary-font;
   width: 25px;
-  height: 25%;
+  // height: 25%;
   background-color: rgb(240, 244, 244);
   color: $primary;
   padding-right: 30px;
   border-color: rgb(149, 178, 190);
+  position: absolute;
+  right: 15%;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background-color: rgb(240, 244, 244);
+  border-color: rgb(240, 244, 244);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: auto;
+  display: block;
+  position: absolute;
+  right: 10%;
+}
+.deleteButton:hover {
+  color: rgb(110, 171, 195);
 }
 
 #selectionComponent {
@@ -81,10 +99,6 @@ body {
   gap: 10px;
   background: rgb(238, 246, 246);
   text-align: left;
-  padding-bottom: 2%;
-  h2 {
-    padding: 2%;
-  }
 }
 
 #selection {
@@ -99,6 +113,7 @@ body {
   color: $primary;
   padding-right: 10px;
   border-color: rgb(149, 178, 190);
+  cursor: pointer;
 }
 
 .selectionButton:hover {
@@ -127,12 +142,15 @@ body {
   border-color: rgb(149, 178, 190);
   color: $primary;
   position: absolute;
-  bottom: 10%;
+  bottom: 10px;
   right: 1%;
+  position: fixed;
+  cursor: pointer;
 }
 
 #resetButton:hover,
-#goBackButton:hover {
+#goBackButton:hover,
+.chooseButton:hover {
   //   color: black;
   //   background-color: rgb(110, 171, 195);
   border-color: rgb(110, 171, 195);

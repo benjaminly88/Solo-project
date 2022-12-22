@@ -36,7 +36,7 @@ class SwitchOpenerComponent extends Component {
       .then((result) => result.json())
       .then((result) => {
         // console.log(result);
-        this.reload();
+        setTimeout(this.reload(), 1000);
       })
       .catch((err) => console.log('err in fetch: ', err));
   }
@@ -51,6 +51,7 @@ class SwitchOpenerComponent extends Component {
           key={i}
           addPart={this.props.addPart}
           goBack={this.props.goBack}
+          reload={this.reload}
         />
       );
     }
@@ -69,7 +70,7 @@ class SwitchOpenerComponent extends Component {
               )
             }
           >
-            Add Switches
+            Add Switch Openers
           </button>
         </div>
       </div>
@@ -78,6 +79,24 @@ class SwitchOpenerComponent extends Component {
 }
 
 class SwitchOpenersInComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.deleteButton = this.deleteButton.bind(this);
+  }
+
+  deleteButton(deleteId) {
+    // console.log(deleteId);
+    fetch('/switchopener', {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: deleteId }),
+    }).then((result) => {
+      setTimeout(this.props.reload(), 1000);
+    });
+  }
+
   render() {
     const switchopener = this.props.switchopener;
     return (
@@ -92,6 +111,15 @@ class SwitchOpenersInComponent extends Component {
           }}
         >
           Add
+        </button>
+        <button
+          className="deleteButton"
+          type="submit"
+          onClick={() => {
+            this.deleteButton(switchopener._id);
+          }}
+        >
+          X
         </button>
       </div>
     );

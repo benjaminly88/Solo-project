@@ -22,6 +22,11 @@ export const addPart = (part, partName) => ({
   partName: partName,
 });
 
+export const removePart = (part) => ({
+  type: types.REMOVE_PART,
+  part: part
+})
+
 export const resetStore = () => ({
   type: types.RESET_STORE,
 });

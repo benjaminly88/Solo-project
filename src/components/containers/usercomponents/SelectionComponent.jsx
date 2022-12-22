@@ -8,9 +8,20 @@ class SelectionComponent extends Component {
 
   render() {
     let loadBackplate;
-    console.log(this.props.backplate);
+    // console.log(this.props.backplate);
     if (this.props.backplate !== null) {
-      loadBackplate = this.props.backplate;
+      loadBackplate = [
+        this.props.backplate,
+        <button
+          className="deleteButton"
+          type="submit"
+          onClick={() => {
+            this.props.removePart('backplate');
+          }}
+        >
+          X
+        </button>,
+      ];
     } else {
       loadBackplate = (
         <button
@@ -25,7 +36,18 @@ class SelectionComponent extends Component {
 
     let loadCase;
     if (this.props.case !== null) {
-      loadCase = this.props.case;
+      loadCase = [
+        this.props.case,
+        <button
+          className="deleteButton"
+          type="submit"
+          onClick={() => {
+            this.props.removePart('case');
+          }}
+        >
+          X
+        </button>,
+      ];
     } else {
       loadCase = (
         <button
@@ -40,7 +62,18 @@ class SelectionComponent extends Component {
 
     let loadSwitches;
     if (this.props.switches !== null) {
-      loadSwitches = this.props.switches;
+      loadSwitches = [
+        this.props.switches,
+        <button
+          className="deleteButton"
+          type="submit"
+          onClick={() => {
+            this.props.removePart('switches');
+          }}
+        >
+          X
+        </button>,
+      ];
     } else {
       loadSwitches = (
         <button
@@ -55,7 +88,18 @@ class SelectionComponent extends Component {
 
     let loadKeycaps;
     if (this.props.keycaps !== null) {
-      loadKeycaps = this.props.keycaps;
+      loadKeycaps = [
+        this.props.keycaps,
+        <button
+          className="deleteButton"
+          type="submit"
+          onClick={() => {
+            this.props.removePart('keycaps');
+          }}
+        >
+          X
+        </button>,
+      ];
     } else {
       loadKeycaps = (
         <button
@@ -70,7 +114,18 @@ class SelectionComponent extends Component {
 
     let loadCords;
     if (this.props.cords !== null) {
-      loadCords = this.props.cords;
+      loadCords = [
+        this.props.cords,
+        <button
+          className="deleteButton"
+          type="submit"
+          onClick={() => {
+            this.props.removePart('cords');
+          }}
+        >
+          X
+        </button>,
+      ];
     } else {
       loadCords = (
         <button
@@ -85,7 +140,18 @@ class SelectionComponent extends Component {
 
     let loadSwitchopener;
     if (this.props.switchopener !== null) {
-      loadSwitchopener = this.props.switchopener;
+      loadSwitchopener = [
+        this.props.switchopener,
+        <button
+          className="deleteButton"
+          type="submit"
+          onClick={() => {
+            this.props.removePart('switchopener');
+          }}
+        >
+          X
+        </button>,
+      ];
     } else {
       loadSwitchopener = (
         <button

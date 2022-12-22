@@ -4,3 +4,4 @@ export const UPDATE_LOCATION = 'UPDATE_LOCATION';
 export const RESET_STORE = 'RESET_STORE';
 export const TO_PAGE = 'TO_PAGE';
 export const ADD_PART = 'ADD_PART';
+export const REMOVE_PART = 'REMOVE_PART';
