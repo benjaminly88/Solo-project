@@ -1,19 +1,20 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const partsModel = require('./models/partModel.js');
 
 const PORT = 3000;
+
+const routes = require('./routes/routes.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/lol', (req, res) => {
-  return res.status(200).send('Lmao');
-});
+// app.get('/lol', (req, res) => {
+//   return res.status(200).send('Lmao');
+// });
 
-app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '../src/index.html'));
-});
+app.use('/', routes);
 
 app.use('*', (req, res) => res.sendStatus(404));
 

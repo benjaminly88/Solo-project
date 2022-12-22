@@ -1,3 +1,5 @@
+import { set } from 'mongoose';
+import { backplate } from '../actions/actions';
 import * as types from '../constants/actionTypes';
 
 const initialState = {
@@ -7,7 +9,7 @@ const initialState = {
   keycaps: null,
   cords: null,
   switchOpener: null,
-  case: false,
+  page: false,
 };
 
 const marketsReducer = (state = initialState, action) => {
@@ -15,20 +17,27 @@ const marketsReducer = (state = initialState, action) => {
     case types.RESET_STORE:
       return { ...initialState };
 
-    case types.BACKPLATE: {
-      return { ...state, case: true };
+    case types.GO_BACK:
+      return { ...state, page: false };
+
+    case types.TOCASE: {
+      return { ...state, page: 'case' };
     }
-    // case types.ADD_MARKET:
-    //   return {
-    //     ...state,
-    //     marketList: state.marketList.concat({
-    //       location: action.payload,
-    //       cards: 0,
-    //     }),
-    //     totalMarkets: state.totalMarkets + 1,
-    //     newLocation: '',
-    //     synced: false,
-    //   };
+    case types.BACKPLATE: {
+      return { ...state, page: 'backplate' };
+    }
+    case types.KEYSWITCHES: {
+      return { ...state, page: 'keyswitches' };
+    }
+    case types.KEYCAPS: {
+      return { ...state, page: 'keycaps' };
+    }
+    case types.CORDS: {
+      return { ...state, page: 'cords' };
+    }
+    case types.SWITCHOPENER: {
+      return { ...state, page: 'switchOpener' };
+    }
 
     default:
       return state;
