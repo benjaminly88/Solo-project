@@ -5,10 +5,18 @@ const mainController = {};
 mainController.getCases = (req, res, next) => {
   //   console.log('im in controller');
   partsModel.Cases.find({}).then((result) => {
-    console.log(result);
+    // console.log(result);
     res.locals.cases = result;
     return next();
   });
+};
+
+mainController.createCases = (req, res, next) => {
+  const { caseName } = req.body;
+  partsModel.Cases.create({ caseName }).then((result) => {
+    console.log(result);
+  });
+  return next();
 };
 
 mainController.getBackplates = (req, res, next) => {
@@ -20,6 +28,14 @@ mainController.getBackplates = (req, res, next) => {
   });
 };
 
+mainController.createBackplates = (req, res, next) => {
+  const { backplateName } = req.body;
+  partsModel.Backplate.create({ backplateName }).then((result) => {
+    console.log(result);
+  });
+  return next();
+};
+
 mainController.getKeyswitches = (req, res, next) => {
   //   console.log('im in controller');
   partsModel.Keyswitches.find({}).then((result) => {
@@ -27,6 +43,14 @@ mainController.getKeyswitches = (req, res, next) => {
     res.locals.keyswitches = result;
     return next();
   });
+};
+
+mainController.createKeyswitches = (req, res, next) => {
+  const { keyswitchesName } = req.body;
+  partsModel.Keyswitches.create({ keyswitchesName }).then((result) => {
+    console.log(result);
+  });
+  return next();
 };
 
 mainController.getKeycaps = (req, res, next) => {
@@ -38,6 +62,14 @@ mainController.getKeycaps = (req, res, next) => {
   });
 };
 
+mainController.createKeycaps = (req, res, next) => {
+  const { keycapsName } = req.body;
+  partsModel.Keycaps.create({ keycapsName }).then((result) => {
+    console.log(result);
+  });
+  return next();
+};
+
 mainController.getCords = (req, res, next) => {
   //   console.log('im in controller');
   partsModel.Cords.find({}).then((result) => {
@@ -47,6 +79,14 @@ mainController.getCords = (req, res, next) => {
   });
 };
 
+mainController.createCords = (req, res, next) => {
+  const { cordsName } = req.body;
+  partsModel.Cords.create({ cordsName }).then((result) => {
+    console.log(result);
+  });
+  return next();
+};
+
 mainController.getSwitchopener = (req, res, next) => {
   //   console.log('im in controller');
   partsModel.Switchopener.find({}).then((result) => {
@@ -54,6 +94,14 @@ mainController.getSwitchopener = (req, res, next) => {
     res.locals.switchopener = result;
     return next();
   });
+};
+
+mainController.createSwitchopener = (req, res, next) => {
+  const { switchopenerName } = req.body;
+  partsModel.Switchopener.create({ switchopenerName }).then((result) => {
+    console.log(result);
+  });
+  return next();
 };
 
 module.exports = mainController;

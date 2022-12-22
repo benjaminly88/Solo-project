@@ -16,6 +16,12 @@ export const addMarket = (event) => (dispatch, getState) => {
   }
 };
 
+export const addPart = (part, partName) => ({
+  type: types.ADD_PART,
+  part: part,
+  partName: partName,
+});
+
 export const resetStore = () => ({
   type: types.RESET_STORE,
 });
@@ -24,26 +30,7 @@ export const goBack = () => ({
   type: types.GO_BACK,
 });
 
-export const toCase = () => ({
-  type: types.TOCASE,
-});
-
-export const backplate = () => ({
-  type: types.BACKPLATE,
-});
-
-export const keyswitches = () => ({
-  type: types.KEYSWITCHES,
-});
-
-export const keycaps = () => ({
-  type: types.KEYCAPS,
-});
-
-export const cords = () => ({
-  type: types.CORDS,
-});
-
-export const switchopener = () => ({
-  type: types.SWITCHOPENER,
+export const toPage = (page) => ({
+  type: types.TO_PAGE,
+  payload: page,
 });

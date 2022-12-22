@@ -9,16 +9,7 @@ import SwitchesComponent from './usercomponents/SwitchesComponent.jsx';
 import KeycapsComponent from './usercomponents/KeycapsComponent.jsx';
 import CordsComponent from './usercomponents/CordsComponent.jsx';
 import SwitchOpenerComponent from './usercomponents/SwitchOpenerComponent.jsx';
-import {
-  toCase,
-  backplate,
-  keyswitches,
-  keycaps,
-  cords,
-  switchopener,
-  resetStore,
-  goBack,
-} from '../../actions/actions.js';
+import { toPage, resetStore, goBack, addPart } from '../../actions/actions.js';
 
 const mapStateToProps = (store) => {
   return {
@@ -27,20 +18,16 @@ const mapStateToProps = (store) => {
     switches: store.switches,
     keycaps: store.keycaps,
     cords: store.cords,
-    switchOpener: store.switchOpener,
+    switchopener: store.switchOpener,
     page: store.page,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  toCase: () => dispatch(toCase()),
-  backplate: () => dispatch(backplate()),
-  keyswitches: () => dispatch(keyswitches()),
-  keycaps: () => dispatch(keycaps()),
-  cords: () => dispatch(cords()),
-  switchopener: () => dispatch(switchopener()),
+  toPage: (page) => dispatch(toPage(page)),
   resetStore: () => dispatch(resetStore()),
   goBack: () => dispatch(goBack()),
+  addPart: (part, partName) => dispatch(addPart(part, partName)),
 });
 
 class MainContainer extends Component {
@@ -48,7 +35,7 @@ class MainContainer extends Component {
     super(props);
   }
   render() {
-    // console.log(this.stat);
+    // console.log(this.props);
     let loaded;
     let reset;
 
@@ -82,26 +69,57 @@ class MainContainer extends Component {
       loaded = [
         <ComponentContainer />,
         <SelectionComponent
-          toCase={this.props.toCase}
+          toPage={this.props.toPage}
+          case={this.props.case}
           backplate={this.props.backplate}
-          keyswitches={this.props.keyswitches}
+          switches={this.props.switches}
           keycaps={this.props.keycaps}
           cords={this.props.cords}
           switchopener={this.props.switchopener}
         />,
       ];
     } else if (this.props.page === 'case') {
-      loaded = <CaseComponent />;
+      loaded = (
+        <CaseComponent
+          addPart={this.props.addPart}
+          goBack={this.props.goBack}
+        />
+      );
     } else if (this.props.page === 'backplate') {
-      loaded = <BackplateComponent />;
+      loaded = (
+        <BackplateComponent
+          addPart={this.props.addPart}
+          goBack={this.props.goBack}
+        />
+      );
     } else if (this.props.page === 'keyswitches') {
-      loaded = <SwitchesComponent />;
+      loaded = (
+        <SwitchesComponent
+          addPart={this.props.addPart}
+          goBack={this.props.goBack}
+        />
+      );
     } else if (this.props.page === 'keycaps') {
-      loaded = <KeycapsComponent />;
+      loaded = (
+        <KeycapsComponent
+          addPart={this.props.addPart}
+          goBack={this.props.goBack}
+        />
+      );
     } else if (this.props.page === 'cords') {
-      loaded = <CordsComponent />;
-    } else if (this.props.page === 'switchOpener') {
-      loaded = <SwitchOpenerComponent />;
+      loaded = (
+        <CordsComponent
+          addPart={this.props.addPart}
+          goBack={this.props.goBack}
+        />
+      );
+    } else if (this.props.page === 'switchopener') {
+      loaded = (
+        <SwitchOpenerComponent
+          addPart={this.props.addPart}
+          goBack={this.props.goBack}
+        />
+      );
     }
 
     return (

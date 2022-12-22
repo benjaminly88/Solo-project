@@ -42,6 +42,33 @@ body {
   margin: auto;
 }
 
+#backplateComponent {
+  background: rgb(240, 244, 244);
+  margin: auto;
+}
+
+.inComponent {
+  background-color: rgb(240, 244, 244);
+  color: $primary;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.chooseButton {
+  align-items: center;
+  font-family: $primary-font;
+  width: 25px;
+  height: 25%;
+  background-color: rgb(240, 244, 244);
+  color: $primary;
+  padding-right: 30px;
+  border-color: rgb(149, 178, 190);
+}
+
 #selectionComponent {
   font-family: $primary-font;
   flex-grow: 2;

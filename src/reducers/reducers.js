@@ -20,23 +20,24 @@ const marketsReducer = (state = initialState, action) => {
     case types.GO_BACK:
       return { ...state, page: false };
 
-    case types.TOCASE: {
-      return { ...state, page: 'case' };
+    case types.TO_PAGE: {
+      return { ...state, page: action.payload };
     }
-    case types.BACKPLATE: {
-      return { ...state, page: 'backplate' };
-    }
-    case types.KEYSWITCHES: {
-      return { ...state, page: 'keyswitches' };
-    }
-    case types.KEYCAPS: {
-      return { ...state, page: 'keycaps' };
-    }
-    case types.CORDS: {
-      return { ...state, page: 'cords' };
-    }
-    case types.SWITCHOPENER: {
-      return { ...state, page: 'switchOpener' };
+
+    case types.ADD_PART: {
+      if (action.part === 'case') {
+        return { ...state, case: action.partName };
+      } else if (action.part === 'backplate') {
+        return { ...state, backplate: action.partName };
+      } else if (action.part === 'switches') {
+        return { ...state, switches: action.partName };
+      } else if (action.part === 'keycaps') {
+        return { ...state, keycaps: action.partName };
+      } else if (action.part === 'cords') {
+        return { ...state, cords: action.partName };
+      } else if (action.part === 'switchopener') {
+        return { ...state, switchOpener: action.partName };
+      }
     }
 
     default:
